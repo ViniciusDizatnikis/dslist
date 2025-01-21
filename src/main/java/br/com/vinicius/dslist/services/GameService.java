@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.vinicius.dslist.dto.GameDTO;
 import br.com.vinicius.dslist.dto.GameMinDTO;
 import br.com.vinicius.dslist.entities.Game;
+import br.com.vinicius.dslist.projections.GameMinProjection;
 import br.com.vinicius.dslist.repositories.GameRepository;
 
 @Service
@@ -33,5 +34,11 @@ public class GameService {
             System.out.println("Não foi possível achar o jogo com o ID: " + id);
             throw new IllegalArgumentException("Jogo não encontrado com o ID: " + id);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(GameMinDTO::new).toList();
     }
 }

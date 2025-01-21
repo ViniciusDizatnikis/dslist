@@ -19,6 +19,9 @@ public class GameList {
 	private long id;
 	private String name;
 	
+public GameList() {
+	// TODO Auto-generated constructor stub
+}
 	
 	public GameList(long id, String name) {
 		super();
