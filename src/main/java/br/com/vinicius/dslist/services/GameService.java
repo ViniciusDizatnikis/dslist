@@ -11,6 +11,7 @@ import br.com.vinicius.dslist.dto.GameDTO;
 import br.com.vinicius.dslist.dto.GameMinDTO;
 import br.com.vinicius.dslist.entities.Game;
 import br.com.vinicius.dslist.projections.GameMinProjection;
+import br.com.vinicius.dslist.repositories.GameListRepository;
 import br.com.vinicius.dslist.repositories.GameRepository;
 
 @Service
@@ -41,4 +42,5 @@ public class GameService {
         List<GameMinProjection> result = gameRepository.searchByList(listId);
         return result.stream().map(GameMinDTO::new).toList();
     }
+
 }
